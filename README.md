@@ -1,2 +1,2 @@
-#Optical character recognition
+Optical character recognition
 
