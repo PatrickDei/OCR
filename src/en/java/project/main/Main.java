@@ -27,7 +27,7 @@ public class Main implements ActionListener{
 		System.out.println("New one\n");
 		watchDirectory(dir.toPath());
 		
-		/*File fox = new File("C:\\Java\\Tess4J\\test\\resources\\test-data\\eurotext.png");
+		File fox = new File("C:\\Java\\Tess4J\\test\\resources\\test-data\\eurotext.png");
 		
 		Tesseract instance = new Tesseract();
 		instance.setDatapath("C:\\Java\\Tess4J\\tessdata");
@@ -41,7 +41,7 @@ public class Main implements ActionListener{
 			System.out.println("Failed!");
 			e.printStackTrace();
 		}
-		System.out.println(s);*/
+		System.out.println(s);
 	}
 
 	
