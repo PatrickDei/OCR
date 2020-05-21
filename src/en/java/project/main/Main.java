@@ -47,7 +47,7 @@ public class Main implements ActionListener{
 	
 	
 	private static File setDirectory() {
-		return new File("C:\\Users\\Ja\\Desktop");
+		return new File("D:\\Fawk ye\\OCRtest");
 	}
 
 	
