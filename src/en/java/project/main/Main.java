@@ -1,33 +1,36 @@
 package en.java.project.main;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
 
-import static java.nio.file.StandardWatchEventKinds.*;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
-public class Main implements ActionListener{
+@SuppressWarnings("unused")
+public class Main extends Application {
+	
+	private static BorderPane root;
+	private static Scene scene;
 	
 	public static void main(String args[]) {
-		//set directory
-		File dir = setDirectory();
+		//launch window
+		launch(args);
 		
-		watchDirectory(dir.toPath());
+		//set directory
+		/*File dir = setDirectory();
+		
+		
+		//watchDirectory(dir.toPath());
 		System.out.println("New one\n");
-		watchDirectory(dir.toPath());
+		//watchDirectory(dir.toPath());
 		
 		File fox = new File("C:\\Java\\Tess4J\\test\\resources\\test-data\\eurotext.png");
+		File test = new File("D:\\Fawk ye\\OCRtest\\test.png");
 		
 		Tesseract instance = new Tesseract();
 		instance.setDatapath("C:\\Java\\Tess4J\\tessdata");
@@ -35,24 +38,24 @@ public class Main implements ActionListener{
 		
 		String s = null;
 		try {
-			s = instance.doOCR(fox);
+			s = instance.doOCR(test);
 		}
 		catch (TesseractException e) {
 			System.out.println("Failed!");
 			e.printStackTrace();
 		}
-		System.out.println(s);
+		System.out.println(s);*/
 	}
 
 	
 	
-	private static File setDirectory() {
+	/*private static File setDirectory() {
 		return new File("D:\\Fawk ye\\OCRtest");
-	}
+	}*/
 
 	
 	
-	private static void watchDirectory(Path path) {
+	/*private static void watchDirectory(Path path) {
 		try {
 			WatchService watcher = FileSystems.getDefault().newWatchService();
 			WatchKey key = path.register(watcher,
@@ -72,7 +75,7 @@ public class Main implements ActionListener{
 	
 		        try {
 		            Path child = path.resolve(filename);
-		            if (!Files.probeContentType(child).equals("image/jpeg")) {
+		            if (!Files.probeContentType(child).equals("text/plain")) {
 		                System.err.format("New file '%s'" +
 		                    " is not an image file.%n", filename);
 		                continue;
@@ -94,13 +97,27 @@ public class Main implements ActionListener{
 			return;
 		}
 		
-	}
-
-
+	}*/
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void start(Stage primaryStage) {
+		try {
+			primaryStage.setTitle("Optical Character Recognition");
+			root = (BorderPane)FXMLLoader.load(getClass().getResource("Program.fxml"));
+			scene = new Scene(root,500,500);
+			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static Scene getScene() {
+		return scene;
+	}
+	
+	public static void setCenterPane(BorderPane center) {
+		root.setCenter(center);
 	}
 }
