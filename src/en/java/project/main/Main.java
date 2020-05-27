@@ -19,13 +19,9 @@ public class Main extends Application {
 	
 	public static void main(String args[]) {
 		//launch window
-		launch(args);
+		launch(args);	
 		
-		//set directory
-		/*File dir = setDirectory();
-		
-		
-		//watchDirectory(dir.toPath());
+		/*//watchDirectory(dir.toPath());
 		System.out.println("New one\n");
 		//watchDirectory(dir.toPath());
 		
@@ -46,13 +42,7 @@ public class Main extends Application {
 		}
 		System.out.println(s);*/
 	}
-
 	
-	
-	/*private static File setDirectory() {
-		return new File("D:\\Fawk ye\\OCRtest");
-	}*/
-
 	
 	
 	/*private static void watchDirectory(Path path) {
@@ -104,7 +94,7 @@ public class Main extends Application {
 		try {
 			primaryStage.setTitle("Optical Character Recognition");
 			root = (BorderPane)FXMLLoader.load(getClass().getResource("Program.fxml"));
-			scene = new Scene(root,500,500);
+			scene = new Scene(root,1000,750);
 			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

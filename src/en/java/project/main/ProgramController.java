@@ -9,13 +9,15 @@ import javafx.stage.DirectoryChooser;
 
 public class ProgramController {
 	
+	public static File selectedDirectory;
+	
 	public void chooseDirectory(){
 		
 		DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(new File("src"));
         
         try {
-        	File selectedDirectory = directoryChooser.showDialog(null);
+        	selectedDirectory = directoryChooser.showDialog(null);
         	
 	        if(selectedDirectory.isDirectory()) {
 	        	System.out.println(selectedDirectory.getAbsolutePath());
