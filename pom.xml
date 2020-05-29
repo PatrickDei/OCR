@@ -21,5 +21,15 @@
   		<artifactId>tess4j</artifactId>
   		<version>3.4.8</version>
   	</dependency>
+  	<dependency>
+ 		<groupId>org.openjfx</groupId>
+ 		<artifactId>javafx-controls</artifactId>
+ 		<version>13.0.1</version>
+	</dependency>
+	<dependency>
+ 		<groupId>org.openjfx</groupId>
+ 		<artifactId>javafx-fxml</artifactId>
+ 		<version>13.0.1</version>
+	</dependency> 
   </dependencies>
 </project>
