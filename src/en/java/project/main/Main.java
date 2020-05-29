@@ -42,52 +42,6 @@ public class Main extends Application {
 		}
 		System.out.println(s);*/
 	}
-	
-	
-	
-	/*private static void watchDirectory(Path path) {
-		try {
-			WatchService watcher = FileSystems.getDefault().newWatchService();
-			WatchKey key = path.register(watcher,
-                    ENTRY_CREATE);
-			key = watcher.take();
-		
-			for (WatchEvent<?> event: key.pollEvents()) {
-		        WatchEvent.Kind<?> kind = event.kind();
-
-		        if (kind == OVERFLOW) {
-		        	System.out.println("Overflow");
-		            continue;
-		        }
-	
-		        WatchEvent<Path> ev = (WatchEvent<Path>)event;
-		        Path filename = ev.context();
-	
-		        try {
-		            Path child = path.resolve(filename);
-		            if (!Files.probeContentType(child).equals("text/plain")) {
-		                System.err.format("New file '%s'" +
-		                    " is not an image file.%n", filename);
-		                continue;
-		            }
-		        } catch (IOException e) {
-		            System.err.println(e);
-		            continue;
-		        }
-		        
-		        System.out.format("File created: %s%n", filename);
-		    }
-			
-		    boolean valid = key.reset();
-		    if (!valid)
-		        return;
-	    } catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			return;
-		}
-		
-	}*/
 
 	@Override
 	public void start(Stage primaryStage) {

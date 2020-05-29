@@ -20,7 +20,6 @@ public class ProgramController {
         	selectedDirectory = directoryChooser.showDialog(null);
         	
 	        if(selectedDirectory.isDirectory()) {
-	        	System.out.println(selectedDirectory.getAbsolutePath());
 	        	BorderPane center = FXMLLoader.load(getClass().getResource("Showcase.fxml"));
 	        	Main.setCenterPane(center);
 	        }
