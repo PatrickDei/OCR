@@ -1,6 +1,8 @@
 package en.java.project.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,29 +20,7 @@ public class Main extends Application {
 	private static Scene scene;
 	
 	public static void main(String args[]) {
-		//launch window
 		launch(args);	
-		
-		/*//watchDirectory(dir.toPath());
-		System.out.println("New one\n");
-		//watchDirectory(dir.toPath());
-		
-		File fox = new File("C:\\Java\\Tess4J\\test\\resources\\test-data\\eurotext.png");
-		File test = new File("D:\\Fawk ye\\OCRtest\\test.png");
-		
-		Tesseract instance = new Tesseract();
-		instance.setDatapath("C:\\Java\\Tess4J\\tessdata");
-		instance.setLanguage("eng+hrv");
-		
-		String s = null;
-		try {
-			s = instance.doOCR(test);
-		}
-		catch (TesseractException e) {
-			System.out.println("Failed!");
-			e.printStackTrace();
-		}
-		System.out.println(s);*/
 	}
 
 	@Override
@@ -48,8 +28,8 @@ public class Main extends Application {
 		try {
 			primaryStage.setTitle("Optical Character Recognition");
 			root = (BorderPane)FXMLLoader.load(getClass().getResource("Program.fxml"));
-			scene = new Scene(root,1000,750);
-			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+			scene = new Scene(root,1200,800);
+			/*scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());*/
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {

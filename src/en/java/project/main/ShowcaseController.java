@@ -11,6 +11,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 
 public class ShowcaseController {
 	
@@ -32,7 +34,7 @@ public class ShowcaseController {
 		filename.setPromptText("Type your new name here");
 		selectedDirectory = ProgramController.selectedDirectory;
 		directory = ProgramController.selectedDirectory.getAbsolutePath();
-		text.setText("Chosen directory: " + ProgramController.selectedDirectory.getAbsolutePath());
+		text.setText("Chosen directory: " + directory + "\nSelect a file and click \"Read\" to read the file");
 		
 		ObservableList<MyFiles> data;
 		data = FXCollections.observableArrayList(MyFiles.listFiles(ProgramController.selectedDirectory.toString()));
@@ -40,9 +42,23 @@ public class ShowcaseController {
 		tab.setItems(new FilteredList<>(data));
 	}
 	
-	public void loadFiles() {
-		MyFiles file = tab.getSelectionModel().getSelectedItem();
-		System.out.println(file.getName());
+	public void readFromFile() {
+		Tesseract instance = new Tesseract();
+		instance.setDatapath("C:\\Java\\Tess4J\\tessdata");
+		instance.setLanguage("eng+hrv");
+		
+		
+		try {
+			MyFiles file = tab.getSelectionModel().getSelectedItem();
+			File f = MyFiles.getPath(file, selectedDirectory.getAbsolutePath());
+			String s = instance.doOCR(f);
+			text.setText(s);
+		} catch (TesseractException e) {
+			System.out.println("Something went wrong with reading the image!");
+			e.printStackTrace();
+		}catch(NullPointerException ex) {
+			System.out.println("Select a file first!");
+		}
 	}
 	
 	public void newRule() {
@@ -69,6 +85,7 @@ public class ShowcaseController {
 	        	text.setText("Chosen directory: " + selectedDirectory.getAbsolutePath());
 	        	ObservableList<MyFiles> data;
 	    		data = FXCollections.observableArrayList(MyFiles.listFiles(directory));
+	    		
 	    		filenames.setCellValueFactory(new PropertyValueFactory<>("name"));
 	    		tab.setItems(new FilteredList<>(data));
 	        }

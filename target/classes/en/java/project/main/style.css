@@ -7,6 +7,31 @@
 .root{
     -fx-font-size: 16pt;
     -fx-font-family: Arial, Helvetica, sans-serif;
-    -fx-base: rgb(131, 205, 255);
-    -fx-background: rgb(108, 117, 122);
+    -fx-base: rgb(30, 59, 78);
+    -fx-background: rgb(30, 30, 31);
+}
+
+.text-area {
+    text-area-background: rgb(52, 52, 53) ;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background ;
+}
+
+.table-view {
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.table-cell {
+    -fx-padding: 0.166667em;
+    -fx-background-color: rgb(52, 52, 53);
+    -fx-text-fill: -fx-text-background-color;
+    -fx-accent: rgb(0, 0, 0);
+    -fx-selection-bar: -fx-accent;
+}
+
+.text-input {
+    -fx-background-color: rgb(52, 52, 53);
 }
