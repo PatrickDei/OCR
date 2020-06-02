@@ -1,5 +1,6 @@
 package en.java.project.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +26,7 @@ public class MyFiles {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	
 
 	public static List<MyFiles> listFiles(String directory){
@@ -35,6 +36,7 @@ public class MyFiles {
             
             List<MyFiles> files = new ArrayList<>();
 
+            
             for(String l : result){
             	l = l.replace(directory + "\\", "");
             	files.add(new MyFiles(l));
@@ -62,5 +64,42 @@ public class MyFiles {
 			if(file.getName().charAt(i) == '\\')
 				return true;	
 		return false;
+	}
+
+	public static File getPath(MyFiles file, String directory) {
+		try (Stream<Path> walk = Files.walk(Paths.get(directory))) {
+            List<String> result = walk.filter(Files::isRegularFile)
+                    .map(x -> x.toString()).collect(Collectors.toList());
+            
+            File f = null;
+            
+            for(String l : result){
+            	if(l.contains(file.getName()))
+            		f = new File(l);
+            }
+            return f;
+		}catch (IOException e) {
+            e.printStackTrace();
+        }
+		System.out.println("Something went wrong when returning the file list! (MyFiles.java::listFiles)");
+		return null;
+	}
+	
+	public static String getPathForRename(MyFiles file, String directory) {
+		try (Stream<Path> walk = Files.walk(Paths.get(directory))) {
+            List<String> result = walk.filter(Files::isRegularFile)
+                    .map(x -> x.toString()).collect(Collectors.toList());
+ 
+            String f = null;
+            for(String l : result){
+            	if(l.contains(file.getName()))
+            		f = l;
+            }
+            return f;
+		}catch (IOException e) {
+            e.printStackTrace();
+        }
+		System.out.println("Something went wrong when returning the file list! (MyFiles.java::listFiles)");
+		return null;
 	}
 }
