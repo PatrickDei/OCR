@@ -84,4 +84,22 @@ public class MyFiles {
 		System.out.println("Something went wrong when returning the file list! (MyFiles.java::listFiles)");
 		return null;
 	}
+	
+	public static String getPathForRename(MyFiles file, String directory) {
+		try (Stream<Path> walk = Files.walk(Paths.get(directory))) {
+            List<String> result = walk.filter(Files::isRegularFile)
+                    .map(x -> x.toString()).collect(Collectors.toList());
+ 
+            String f = null;
+            for(String l : result){
+            	if(l.contains(file.getName()))
+            		f = l;
+            }
+            return f;
+		}catch (IOException e) {
+            e.printStackTrace();
+        }
+		System.out.println("Something went wrong when returning the file list! (MyFiles.java::listFiles)");
+		return null;
+	}
 }

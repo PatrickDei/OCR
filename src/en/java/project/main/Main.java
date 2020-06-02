@@ -21,6 +21,7 @@ public class Main extends Application {
 	
 	public static void main(String args[]) {
 		launch(args);	
+		Rule r;
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class Main extends Application {
 			primaryStage.setTitle("Optical Character Recognition");
 			root = (BorderPane)FXMLLoader.load(getClass().getResource("Program.fxml"));
 			scene = new Scene(root,1200,800);
-			/*scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());*/
+			//scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
